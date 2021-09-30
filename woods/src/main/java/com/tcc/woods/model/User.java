@@ -9,8 +9,8 @@ import com.tcc.woods.enums.Role;
 
 import lombok.Data;
 
-@Data
-public class User {
+
+public @Data class User {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,4 +20,5 @@ public class User {
 	private String password;
 	private String email;
 	private Role role;
+	private String userCode;
 }
