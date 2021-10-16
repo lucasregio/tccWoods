@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import com.woods.enums.RoleEnum;
-
 import lombok.Data;
 
-@Entity
-public @Data abstract class User implements Serializable {
+
+@MappedSuperclass
+@Data
+public abstract class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -17,10 +17,12 @@ public @Data abstract class User implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
+    private String login;
+    private String password;
     private String email;
     private String phone;
     private String imageUrl;
     @OneToOne
-    @JoinColumn()
+    @JoinColumn(name = "address_id")
     private Address address;
 }

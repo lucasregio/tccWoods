@@ -1,15 +1,24 @@
 package com.woods.model;
 
-import lombok.Data;
+import java.util.List;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
+import javax.persistence.OneToMany;
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-public @Data  class Client extends User implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    private String CPF;
-
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper=true)
+public class Client extends User {
+    private String cpf;
+    @OneToMany
+    private List<Budget> budget;
 }

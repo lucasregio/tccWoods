@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public  @Data class Address implements Serializable {
+@Data 
+public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
