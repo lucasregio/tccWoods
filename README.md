@@ -1,2 +1,2 @@
 # employeemanager
-App to manage employees
+App to manage users

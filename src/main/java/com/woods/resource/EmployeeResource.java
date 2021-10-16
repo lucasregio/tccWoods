@@ -2,6 +2,7 @@ package com.woods.resource;
 
 import java.util.List;
 
+import com.woods.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.woods.model.Employee;
 import com.woods.service.EmployeeService;
 
 @RestController
@@ -26,27 +26,27 @@ public class EmployeeResource {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Employee>> getAllEmployees () {
-        List<Employee> employees = employeeService.findAllEmployees();
-        return new ResponseEntity<>(employees, HttpStatus.OK);
+    public ResponseEntity<List<User>> getAllEmployees () {
+        List<User> users = employeeService.findAllEmployees();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Employee> getEmployeeById (@PathVariable("id") Long id) {
-        Employee employee = employeeService.findEmployeeById(id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+    public ResponseEntity<User> getEmployeeById (@PathVariable("id") Long id) {
+        User user = employeeService.findEmployeeById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-        Employee newEmployee = employeeService.addEmployee(employee);
-        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
+    public ResponseEntity<User> addEmployee(@RequestBody User user) {
+        User newUser = employeeService.addEmployee(user);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
-        Employee updateEmployee = employeeService.updateEmployee(employee);
-        return new ResponseEntity<>(updateEmployee, HttpStatus.OK);
+    public ResponseEntity<User> updateEmployee(@RequestBody User user) {
+        User updateUser = employeeService.updateEmployee(user);
+        return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

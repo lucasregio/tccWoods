@@ -2,12 +2,11 @@ package com.woods.repo;
 
 import java.util.Optional;
 
+import com.woods.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.woods.model.Employee;
-
-public interface EmployeeRepo extends JpaRepository<Employee, Long> {
+public interface EmployeeRepo extends JpaRepository<User, Long> {
     void deleteEmployeeById(Long id);
 
-    Optional<Employee> findEmployeeById(Long id);
+    Optional<User> findEmployeeById(Long id);
 }

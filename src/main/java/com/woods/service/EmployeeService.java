@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import com.woods.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.woods.exception.UserNotFoundException;
-import com.woods.model.Employee;
 import com.woods.repo.EmployeeRepo;
 
 @Service
@@ -22,20 +22,20 @@ public class EmployeeService {
         this.employeeRepo = employeeRepo;
     }
 
-    public Employee addEmployee(Employee employee) {
-        employee.setEmployeeCode(UUID.randomUUID().toString());
-        return employeeRepo.save(employee);
+    public User addEmployee(User user) {
+        user.setEmployeeCode(UUID.randomUUID().toString());
+        return employeeRepo.save(user);
     }
 
-    public List<Employee> findAllEmployees() {
+    public List<User> findAllEmployees() {
         return employeeRepo.findAll();
     }
 
-    public Employee updateEmployee(Employee employee) {
-        return employeeRepo.save(employee);
+    public User updateEmployee(User user) {
+        return employeeRepo.save(user);
     }
 
-    public Employee findEmployeeById(Long id) {
+    public User findEmployeeById(Long id) {
         return employeeRepo.findEmployeeById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
