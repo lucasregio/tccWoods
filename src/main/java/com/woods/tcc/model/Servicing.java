@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Data
-public class Service implements Serializable{
+public class Servicing implements Serializable{
 
   private static final long serialVersionUID = 1L;
   @Id

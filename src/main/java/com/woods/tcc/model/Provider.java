@@ -20,5 +20,5 @@ import javax.persistence.OneToMany;
 public class Provider extends User{
     private String cnpj;
     @OneToMany(mappedBy="provider")
-    private List<Service> listService;
+    private List<Servicing> listService;
 }
