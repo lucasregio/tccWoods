@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientService {
   @Autowired
-  ClientRepository clientRepository;
+  private ClientRepository clientRepository;
 
   public List<Client> findAll() {
     return this.clientRepository.findAll();
@@ -49,7 +49,7 @@ public class ClientService {
 
   public void updateData(Client entity, Client obj) {
     entity.setAddress(obj.getAddress());
-    entity.setBudget(obj.getBudget());
+    entity.setListBudgets(obj.getListBudgets());
     entity.setCpf(obj.getCpf());
     entity.setEmail(obj.getEmail());
     entity.setImageUrl(obj.getImageUrl());

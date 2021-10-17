@@ -15,7 +15,7 @@ import com.woods.tcc.model.Servicing;
 @Service
 public class ServicingService {
   @Autowired
-  ServiceRepository serviceRepository;
+  private ServiceRepository serviceRepository;
 
   public List<Servicing> findAll() {
     return this.serviceRepository.findAll();

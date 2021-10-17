@@ -20,5 +20,5 @@ import lombok.Setter;
 public class Client extends User {
     private String cpf;
     @OneToMany(mappedBy="client")
-    private List<Budget> budget;
+    private List<Budget> listBudgets;
 }
