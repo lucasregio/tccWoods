@@ -31,4 +31,7 @@ public class Budget implements Serializable{
   @ManyToOne
   @JoinColumn(name = "client_id", nullable=false)
   private Client client;
+  @ManyToOne
+  @JoinColumn(name = "servicing_id", nullable=false)
+  private Servicing servicing;
 }
