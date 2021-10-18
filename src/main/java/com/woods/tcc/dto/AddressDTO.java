@@ -26,4 +26,5 @@ public class AddressDTO {
     this.city = address.getCity();
     this.state = address.getState();
   }
+
 }

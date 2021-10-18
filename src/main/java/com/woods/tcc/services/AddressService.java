@@ -25,6 +25,7 @@ public class AddressService {
     Optional<Address> service = this.addressRepository.findById(id);
     return service.orElseThrow();
   }
+
   public Address createAddress(Address entity){
     return this.addressRepository.save(entity);
   }

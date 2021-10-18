@@ -18,8 +18,10 @@ public abstract class User implements Serializable {
   @Column(nullable = false, updatable = false)
   private Long id;
   private String name;
+  @Column(unique = true)
   private String userName;
   private String password;
+  @Column(unique = true)
   private String email;
   private String phone;
   private String imageUrl;
