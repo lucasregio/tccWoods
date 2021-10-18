@@ -15,7 +15,7 @@ import com.woods.tcc.model.Budget;
 @Service
 public class BudgetService {
   @Autowired
-  BudgetRepository addressRepository;
+  private BudgetRepository addressRepository;
 
   public List<Budget> findAll() {
     return this.addressRepository.findAll();

@@ -15,7 +15,7 @@ import com.woods.tcc.model.Payment;
 @Service
 public class PaymentService {
   @Autowired
-  PaymentRepository paymentRepository;
+  private PaymentRepository paymentRepository;
 
   public List<Payment> findAll() {
     return this.paymentRepository.findAll();

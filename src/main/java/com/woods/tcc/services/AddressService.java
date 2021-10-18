@@ -15,7 +15,7 @@ import com.woods.tcc.model.Address;
 @Service
 public class AddressService {
   @Autowired
-  AddressRepository addressRepository;
+  private AddressRepository addressRepository;
 
   public List<Address> findAll() {
     return this.addressRepository.findAll();
