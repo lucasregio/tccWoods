@@ -39,7 +39,7 @@ public class ClientController {
     List<Client> lClients = this.clientService.findAll();
 
     if(lClients.isEmpty())
-      throw new EntityNotFoundException();
+      throw new EntityNotFoundException("There is no clients found");
 
     List<ClientDTO> lClientDTOs = lClients
     .stream()
