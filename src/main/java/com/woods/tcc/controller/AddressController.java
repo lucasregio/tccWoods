@@ -5,13 +5,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import com.woods.tcc.services.AddressService;
-import com.woods.tcc.services.exceptions.EntityNotFoundException;
 import com.woods.tcc.dto.AddressDTO;
 import com.woods.tcc.model.Address;
+import com.woods.tcc.services.AddressService;
+import com.woods.tcc.services.exceptions.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
