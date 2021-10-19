@@ -15,14 +15,14 @@ public class ClientDTO implements Serializable{
 
   private static final long serialVersionUID = 1L;
 
-  private Long id;
   private String name;
   private String userName;
   private String email;
   private String phone;
   private String imageUrl;
-  private Long addresId;
+  private Long addressId;
   private String password;
+  private String cpf;
 
   public ClientDTO(Client client) {
     this.name = client.getName();
@@ -30,7 +30,8 @@ public class ClientDTO implements Serializable{
     this.email = client.getEmail();
     this.phone = client .getPhone();
     this.imageUrl = client.getImageUrl();
-    this.addresId = client.getAddress().getId();
+    this.addressId = client.getAddress().getId();
     this.password = client.getPassword();
+    this.cpf = client.getCpf();
   }
 }

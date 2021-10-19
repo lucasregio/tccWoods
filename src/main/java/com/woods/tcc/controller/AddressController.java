@@ -56,7 +56,7 @@ public class AddressController {
 
   @PostMapping
   public ResponseEntity<AddressDTO> create(@RequestBody AddressDTO addressDto) {
-    Address address = new Address.AddressBuilder()
+    Address address = Address.builder()
       .city(addressDto.getCity())
       .complement(addressDto.getComplement())
       .district(addressDto.getDistrict())

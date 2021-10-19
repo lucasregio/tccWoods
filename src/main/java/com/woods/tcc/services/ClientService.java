@@ -25,6 +25,11 @@ public class ClientService {
     return cOptional.orElseThrow(() -> new EntityNotFoundException(id));
   }
 
+  public Optional<Client> findByEmail(String email) {
+    Optional<Client> cOptional = this.clientRepository.findByEmail(email);
+    return cOptional;
+  }
+
   public Client create(Client client) {
     return this.clientRepository.save(client);
   }
