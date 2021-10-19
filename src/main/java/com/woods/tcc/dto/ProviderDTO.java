@@ -1,0 +1,35 @@
+package com.woods.tcc.dto;
+
+import java.io.Serializable;
+
+import com.woods.tcc.model.Provider;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class ProviderDTO implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+
+  private String name;
+  private String userName;
+  private String email;
+  private String phone;
+  private String imageUrl;
+  private Long addresId;
+  private String password;
+
+  public ProviderDTO(Provider provider) {
+    this.name = provider.getName();
+    this.userName = provider.getUserName();
+    this.email = provider.getEmail();
+    this.phone = provider .getPhone();
+    this.imageUrl = provider.getImageUrl();
+    this.addresId = provider.getAddress().getId();
+    this.password = provider.getPassword();
+  }
+}
