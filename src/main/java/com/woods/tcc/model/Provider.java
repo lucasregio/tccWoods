@@ -1,6 +1,7 @@
 package com.woods.tcc.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ import javax.persistence.OneToMany;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
+@Builder
 public class Provider extends User{
     private String cnpj;
     @OneToMany(mappedBy="provider")

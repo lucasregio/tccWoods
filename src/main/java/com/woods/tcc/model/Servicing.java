@@ -1,5 +1,6 @@
 package com.woods.tcc.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Data
+@Builder
 public class Servicing implements Serializable{
 
   private static final long serialVersionUID = 1L;
