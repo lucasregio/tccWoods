@@ -1,9 +1,10 @@
 package com.woods.tcc.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Data
+@Builder
 public class Budget implements Serializable{
 
   private static final long serialVersionUID = 1L;
@@ -27,8 +29,8 @@ public class Budget implements Serializable{
   private String name;
   private String description;
   private String value;
-  private Date expirationDate;
-  private Date requestDate;
+  private Instant expirationDate;
+  private Instant requestDate;
   @ManyToOne
   @JoinColumn(name = "client_id", nullable=false)
   private Client client;

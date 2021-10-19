@@ -19,6 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode(callSuper=true)
+@Builder
 public class Client extends User {
     private String cpf;
     @OneToMany(mappedBy="client")
