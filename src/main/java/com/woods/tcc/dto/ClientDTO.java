@@ -1,5 +1,7 @@
 package com.woods.tcc.dto;
 
+import java.io.Serializable;
+
 import com.woods.tcc.model.Client;
 
 import lombok.Getter;
@@ -9,7 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ClientDTO {
+public class ClientDTO implements Serializable{
+
+  private static final long serialVersionUID = 1L;
+
   private Long id;
   private String name;
   private String userName;

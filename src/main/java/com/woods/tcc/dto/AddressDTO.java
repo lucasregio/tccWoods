@@ -1,5 +1,7 @@
 package com.woods.tcc.dto;
 
+import java.io.Serializable;
+
 import com.woods.tcc.model.Address;
 
 import lombok.Getter;
@@ -9,7 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AddressDTO {
+public class AddressDTO  implements Serializable{
+
+  private static final long serialVersionUID = 1L;
 
   private String street;
   private String number;
