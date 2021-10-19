@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @Data
@@ -34,4 +35,7 @@ public class Budget implements Serializable{
   @ManyToOne
   @JoinColumn(name = "servicing_id", nullable=false)
   private Servicing servicing;
+  @OneToOne
+  @JoinColumn(name = "payment_id", referencedColumnName = "id")
+  private Payment payment;
 }
