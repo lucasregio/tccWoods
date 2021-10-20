@@ -89,7 +89,7 @@ public class ProviderController {
     .build();
 
     Provider provider = Provider.builder()
-    .cpf(providerDTO.get())
+    .cnpj(providerDTO.getCnpj())
     .build();
     provider.setAddress(address);
     provider.setEmail(providerDTO.getEmail());
@@ -127,7 +127,7 @@ public class ProviderController {
     .build();
 
     Provider provider = Provider.builder()
-    .cpf(providerDTO.getCnpj())
+    .cnpj(providerDTO.getCnpj())
     .build();
     provider.setAddress(address);
     provider.setEmail(providerDTO.getEmail());

@@ -30,6 +30,10 @@ public class ProviderService {
     return cOptional;
   }
 
+  public Provider create(Provider provider) {
+    return this.providerRepository.save(provider);
+  }
+
   public void delete(Long id) {
     try {
       this.providerRepository.deleteById(id);
