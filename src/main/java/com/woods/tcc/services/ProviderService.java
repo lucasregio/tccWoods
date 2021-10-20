@@ -25,6 +25,11 @@ public class ProviderService {
     return oProvider.orElseThrow(() -> new EntityNotFoundException(id));
   }
 
+  public Optional<Provider> findByEmail(String email) {
+    Optional<Provider> cOptional = this.providerRepository.findByEmail(email);
+    return cOptional;
+  }
+
   public void delete(Long id) {
     try {
       this.providerRepository.deleteById(id);
