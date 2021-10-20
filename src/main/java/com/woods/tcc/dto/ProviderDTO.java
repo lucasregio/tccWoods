@@ -20,8 +20,9 @@ public class ProviderDTO implements Serializable{
   private String email;
   private String phone;
   private String imageUrl;
-  private Long addresId;
+  private Long addressId;
   private String password;
+  private String cnpj;
 
   public ProviderDTO(Provider provider) {
     this.name = provider.getName();
@@ -29,7 +30,8 @@ public class ProviderDTO implements Serializable{
     this.email = provider.getEmail();
     this.phone = provider .getPhone();
     this.imageUrl = provider.getImageUrl();
-    this.addresId = provider.getAddress().getId();
+    this.addressId = provider.getAddress().getId();
     this.password = provider.getPassword();
+    this.cnpj = provider.getCnpj();
   }
 }
