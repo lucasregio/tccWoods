@@ -17,9 +17,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -79,8 +81,8 @@ public class ClientController {
     return ResponseEntity.status(status).body(msg);
   }
 
-  @PostMapping
-  public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTO) {
+  @PostMapping(value = "/create/{id}")
+  public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO clientDTO) {
     Address address = Address
     .builder()
     .id(clientDTO.getAddressId())
@@ -111,4 +113,35 @@ public class ClientController {
     return ResponseEntity.created(uri).body(new ClientDTO(client));
   }
 
+  @DeleteMapping(value ="/delete/{id}")
+  public ResponseEntity<String> deleteById (@PathVariable Long id, @RequestBody ClientDTO clientDTO){
+    this.clientService.delete(id);
+    return ResponseEntity.status(HttpStatus.OK).body("Successful client deletion");
+  }
+
+  @PutMapping(value = "/update/{id}")
+  public ResponseEntity<ClientDTO> updateById (@PathVariable Long id, @RequestBody ClientDTO clientDTO) {
+    Address address = Address
+    .builder()
+    .id(clientDTO.getAddressId())
+    .build();
+
+    Client client = Client.builder()
+    .cpf(clientDTO.getCpf())
+    .build();
+    client.setAddress(address);
+    client.setEmail(clientDTO.getEmail());
+    client.setImageUrl(clientDTO.getImageUrl());
+    client.setName(clientDTO.getEmail());
+    client.setPhone(clientDTO.getPhone());
+    client.setUserName(clientDTO.getUserName());
+    client.setPassword(this.encoder.encode(clientDTO.getPassword()));
+
+    client = this.clientService.update(id, client);
+
+    if(client == null){
+      throw new EntityNotFoundException(id);
+    }
+    return  ResponseEntity.ok().body(clientDTO);
+  }
 }
