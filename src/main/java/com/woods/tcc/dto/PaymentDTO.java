@@ -17,8 +17,8 @@ public class PaymentDTO implements Serializable{
   private static final long serialVersionUID = 1L;
 
   private String paymentType;
-  private String totalValue;
-  private String companyTax;
+  private Double totalValue;
+  private Double companyTax;
   private Instant paymentDate;
   private Instant createdAt;
 

@@ -23,6 +23,7 @@ public class ProviderDTO implements Serializable{
   private Long addressId;
   private String password;
   private String cnpj;
+  private Long evaluation;
 
   public ProviderDTO(Provider provider) {
     this.name = provider.getName();
@@ -33,5 +34,6 @@ public class ProviderDTO implements Serializable{
     this.addressId = provider.getAddress().getId();
     this.password = provider.getPassword();
     this.cnpj = provider.getCnpj();
+    this.evaluation = provider.getEvaluation();
   }
 }

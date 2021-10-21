@@ -18,7 +18,7 @@ public class BudgetDTO implements Serializable{
 
   private String name;
   private String description;
-  private String value;
+  private Long value;
   private Instant expirationDate;
   private Instant requestDate;
   private Long clientId;
