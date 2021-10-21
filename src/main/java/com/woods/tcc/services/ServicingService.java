@@ -3,14 +3,13 @@ package com.woods.tcc.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.woods.tcc.model.Servicing;
 import com.woods.tcc.repositories.ServiceRepository;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
-import com.woods.tcc.model.Servicing;
 
 @Service
 public class ServicingService {
@@ -38,7 +37,7 @@ public class ServicingService {
     }
   }
 
-  public Servicing updatServicing( Long id, Servicing obj) {
+  public Servicing updateServicing( Long id, Servicing obj) {
     try {
       Servicing entity = this.serviceRepository.getById(id);
       updateData(entity, obj);
