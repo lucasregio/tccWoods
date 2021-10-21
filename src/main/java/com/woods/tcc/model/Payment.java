@@ -27,9 +27,9 @@ public class Payment implements Serializable{
   @Column(nullable = false)
   private String paymentType;
   @Column(nullable = false)
-  private String totalValue;
+  private Double totalValue;
   @Column(nullable = false)
-  private String companyTax;
+  private Double companyTax;
   private Instant paymentDate;
   @Column(unique = true, nullable = false)
   private Instant createdAt;

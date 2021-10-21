@@ -1,8 +1,5 @@
 package com.woods.tcc.model;
 
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -14,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import lombok.Builder;
+import lombok.Data;
 
 @Entity
 @Data
@@ -28,7 +28,7 @@ public class Budget implements Serializable{
   private Long id;
   private String name;
   private String description;
-  private String value;
+  private Long value;
   private Instant expirationDate;
   private Instant requestDate;
   @ManyToOne
