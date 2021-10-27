@@ -23,4 +23,6 @@ public class Client extends User {
   private String cpf;
   @OneToMany(mappedBy="client")
   private List<Budget> listBudgets;
+  @OneToMany(mappedBy="clientChat")
+  private List<Chat> listChats;
 }

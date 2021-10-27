@@ -24,4 +24,6 @@ public class Provider extends User{
   private Long evaluation;
   @OneToMany(mappedBy="provider")
   private List<Servicing> listService;
+  @OneToMany(mappedBy="provider")
+  private List<Chat> listChats;
 }
