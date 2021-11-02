@@ -81,7 +81,7 @@ public class ProviderController {
     return ResponseEntity.status(status).body(msg);
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<ProviderDTO> create(@RequestBody ProviderDTO providerDTO) {
     Address address = Address
     .builder()

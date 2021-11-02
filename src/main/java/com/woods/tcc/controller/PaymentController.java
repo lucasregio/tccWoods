@@ -48,7 +48,7 @@ public class PaymentController {
     }
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<PaymentDTO> create(@RequestBody PaymentDTO paymentDTO, @PathVariable(required = true) Long id) {
     Payment payment = Payment.builder()
     .paymentType(paymentDTO.getPaymentType())

@@ -56,7 +56,7 @@ public class AddressController {
     }
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<AddressDTO> create(@RequestBody AddressDTO addressDto) {
     Address address = Address.builder()
       .city(addressDto.getCity())

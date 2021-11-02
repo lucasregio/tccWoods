@@ -55,7 +55,7 @@ public class ServicingController {
     }
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<ServicingDTO> create(@RequestBody ServicingDTO servicingDTO) {
     Servicing servicing = Servicing.builder()
     .name(servicingDTO.getName())

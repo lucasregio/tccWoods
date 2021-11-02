@@ -48,7 +48,7 @@ public class BudgetController {
     }
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<BudgetDTO> create(@RequestBody BudgetDTO budgetDTO, @PathVariable(required = true) Long id) {
     Budget budget = Budget.builder()
     .name(budgetDTO.getName())
@@ -72,8 +72,9 @@ public class BudgetController {
   public ResponseEntity<String> deletebyId(@PathVariable Long id){
     this.budgetService.deleteBudget(id);
     return ResponseEntity.status(HttpStatus.OK).body("Successful budget deletion");
-
   }
+
+  //** TALVES NÃO SERÁ UTILIZADO*/
 
   @PutMapping(value = "/update/{id}")
   public ResponseEntity<BudgetDTO> updateById (@PathVariable Long id, @RequestBody BudgetDTO budgetDTO) {

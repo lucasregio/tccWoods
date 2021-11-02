@@ -81,7 +81,7 @@ public class ClientController {
     return ResponseEntity.status(status).body(msg);
   }
 
-  @PostMapping(value = "/create/{id}")
+  @PostMapping(value = "/create")
   public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO clientDTO) {
     Address address = Address
     .builder()
