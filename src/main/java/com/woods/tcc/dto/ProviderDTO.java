@@ -34,6 +34,6 @@ public class ProviderDTO implements Serializable{
     this.addressId = provider.getAddress().getId();
     this.password = provider.getPassword();
     this.cnpj = provider.getCnpj();
-    this.evaluation = provider.getEvaluation();
+    this.evaluation = provider.getRating();
   }
 }

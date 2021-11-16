@@ -21,7 +21,7 @@ import lombok.Setter;
 @Builder
 public class Provider extends User{
   private String cnpj;
-  private Long evaluation;
+  private Long rating;
   @OneToMany(mappedBy="provider")
   private List<Servicing> listService;
   @OneToMany(mappedBy="provider")
