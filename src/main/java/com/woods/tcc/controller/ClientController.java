@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "/clients")
+@RequestMapping(value = "/client")
 public class ClientController {
   @Autowired
   private ClientService clientService;

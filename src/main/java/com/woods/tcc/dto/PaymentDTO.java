@@ -21,6 +21,7 @@ public class PaymentDTO implements Serializable{
   private Double companyTax;
   private Instant paymentDate;
   private Instant createdAt;
+  private Long budgetId;
 
   public PaymentDTO(Payment payment) {
     this.paymentType = payment.getPaymentType();
@@ -28,6 +29,7 @@ public class PaymentDTO implements Serializable{
     this.companyTax = payment.getCompanyTax();
     this.paymentDate = payment.getPaymentDate();
     this.createdAt = payment.getCreatedAt();
+    this.budgetId = payment.getBudget().getId();
   }
 
 }

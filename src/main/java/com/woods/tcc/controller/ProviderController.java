@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "/providers")
+@RequestMapping(value = "/provider")
 public class ProviderController {
   @Autowired
   private ProviderService providerService;

@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import com.woods.tcc.dto.PaymentDTO;
+import com.woods.tcc.model.Budget;
 import com.woods.tcc.model.Payment;
 import com.woods.tcc.services.PaymentService;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
@@ -49,7 +50,11 @@ public class PaymentController {
   }
 
   @PostMapping(value = "/create")
-  public ResponseEntity<PaymentDTO> create(@RequestBody PaymentDTO paymentDTO, @PathVariable(required = true) Long id) {
+  public ResponseEntity<PaymentDTO> create(@RequestBody PaymentDTO paymentDTO) {
+    Budget budget = Budget.builder()
+    .id(paymentDTO.getBudgetId())
+    .build();
+
     Payment payment = Payment.builder()
     .paymentType(paymentDTO.getPaymentType())
     .paymentDate(paymentDTO.getPaymentDate())
@@ -58,6 +63,7 @@ public class PaymentController {
     .createdAt(paymentDTO.getCreatedAt())
     .build();
 
+    payment.setBudget(budget);
     payment = paymentService.createPayment(payment);
 
     URI uri = ServletUriComponentsBuilder

@@ -15,6 +15,7 @@ public class ProviderDTO implements Serializable{
 
   private static final long serialVersionUID = 1L;
 
+  private Long id;
   private String name;
   private String userName;
   private String email;
@@ -26,6 +27,7 @@ public class ProviderDTO implements Serializable{
   private Long evaluation;
 
   public ProviderDTO(Provider provider) {
+    this.id = provider.getId();
     this.name = provider.getName();
     this.userName = provider.getUserName();
     this.email = provider.getEmail();

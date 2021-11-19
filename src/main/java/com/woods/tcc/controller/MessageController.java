@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import com.woods.tcc.dto.MessageDTO;
+import com.woods.tcc.model.Chat;
 import com.woods.tcc.model.Message;
 import com.woods.tcc.services.MessageService;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
@@ -58,15 +59,15 @@ public class MessageController {
 
   @PostMapping(value = "/create")
   public ResponseEntity<MessageDTO> create(@RequestBody MessageDTO messageDto) {
-    Message message = Message.builder()
-      // .city(messageDto.getCity())
-      // .complement(messageDto.getComplement())
-      // .district(messageDto.getDistrict())
-      // .number(messageDto.getNumber())
-      // .street(messageDto.getCity())
-      // .state(messageDto.getState())
-      .build();
+    Chat chat = Chat.builder()
+    .id(messageDto.getChatId())
+    .build();
 
+    Message message = Message.builder()
+    .description(messageDto.getDescription())
+    .build();
+
+    message.setChat(chat);
     message = messageService.createMessage(message);
 
     URI uri = ServletUriComponentsBuilder
@@ -87,12 +88,6 @@ public class MessageController {
   @PutMapping(value = "/update/{id}")
   public ResponseEntity<MessageDTO> updateById (@PathVariable Long id, @RequestBody MessageDTO messageDTO) {
     Message message = Message.builder()
-    // .street(messageDTO.getStreet())
-    // .number(messageDTO.getNumber())
-    // .complement(messageDTO.getComplement())
-    // .district(messageDTO.getDistrict())
-    // .city(messageDTO.getCity())
-    // .state(messageDTO.getState())
     .build();
     message = this.messageService.updateMessage(id, message);
 

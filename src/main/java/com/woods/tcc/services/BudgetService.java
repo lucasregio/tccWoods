@@ -3,6 +3,7 @@ package com.woods.tcc.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.woods.tcc.model.Budget;
 import com.woods.tcc.repositories.BudgetRepository;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
 
@@ -10,28 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.woods.tcc.model.Budget;
-
 @Service
 public class BudgetService {
   @Autowired
-  private BudgetRepository addressRepository;
+  private BudgetRepository budgetRepository;
 
   public List<Budget> findAll() {
-    return this.addressRepository.findAll();
+    return this.budgetRepository.findAll();
   }
 
   public Budget findById(Long id) {
-    Optional<Budget> service = this.addressRepository.findById(id);
+    Optional<Budget> service = this.budgetRepository.findById(id);
     return service.orElseThrow();
   }
   public Budget createBudget(Budget entity){
-    return this.addressRepository.save(entity);
+    return this.budgetRepository.save(entity);
   }
 
   public void deleteBudget (long id){
     try {
-      this.addressRepository.deleteById(id);
+      this.budgetRepository.deleteById(id);
     } catch(EmptyResultDataAccessException e) {
       throw new EntityNotFoundException(id);
     }
@@ -39,9 +38,9 @@ public class BudgetService {
 
   public Budget updateBudget (Long id, Budget obj){
     try {
-      Budget entity = this.addressRepository.getById(id);
+      Budget entity = this.budgetRepository.getById(id);
       updateData(entity, obj);
-      return this.addressRepository.save(entity);
+      return this.budgetRepository.save(entity);
     } catch (EntityNotFoundException e) {
       throw new EntityNotFoundException(id);
     }

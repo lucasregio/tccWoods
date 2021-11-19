@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 
 import com.woods.tcc.dto.BudgetDTO;
 import com.woods.tcc.model.Budget;
+import com.woods.tcc.model.Client;
+import com.woods.tcc.model.Servicing;
 import com.woods.tcc.services.BudgetService;
+import com.woods.tcc.services.ClientService;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,9 @@ public class BudgetController {
   @Autowired
   private BudgetService budgetService;
 
+  @Autowired
+  private ClientService clientService;
+
   @GetMapping
   public ResponseEntity<List<BudgetDTO>> findAll(){
     List<Budget> listBudget = budgetService.findAll();
@@ -48,8 +54,16 @@ public class BudgetController {
     }
   }
 
-  @PostMapping(value = "/create")
-  public ResponseEntity<BudgetDTO> create(@RequestBody BudgetDTO budgetDTO, @PathVariable(required = true) Long id) {
+  @PostMapping(value = "/create/{clientId}")
+  public ResponseEntity<BudgetDTO> create(
+    @RequestBody BudgetDTO budgetDTO,
+    @PathVariable (required = true) Long clientId) {
+
+    Servicing servicing = Servicing.builder()
+    .id(budgetDTO.getServicingId())
+    .build();
+
+    Client client = this.clientService.findById(clientId);
     Budget budget = Budget.builder()
     .name(budgetDTO.getName())
     .description(budgetDTO.getDescription())
@@ -58,8 +72,9 @@ public class BudgetController {
     .requestDate(budgetDTO.getRequestDate())
     .build();
 
+    budget.setClient(client);
+    budget.setServicing(servicing);
     budget = budgetService.createBudget(budget);
-
     URI uri = ServletUriComponentsBuilder
               .fromCurrentRequest()
               .path("/{id}")

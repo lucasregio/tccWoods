@@ -6,7 +6,9 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import com.woods.tcc.dto.ServicingDTO;
+import com.woods.tcc.model.Provider;
 import com.woods.tcc.model.Servicing;
+import com.woods.tcc.services.ProviderService;
 import com.woods.tcc.services.ServicingService;
 import com.woods.tcc.services.exceptions.EntityNotFoundException;
 
@@ -25,10 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "/servicings")
+@RequestMapping(value = "/servicing")
 public class ServicingController {
   @Autowired
   private ServicingService servicingService;
+
+  @Autowired
+  private ProviderService providerService;
 
   @GetMapping
   public ResponseEntity<List<ServicingDTO>> findAll() {
@@ -55,14 +60,19 @@ public class ServicingController {
     }
   }
 
-  @PostMapping(value = "/create")
-  public ResponseEntity<ServicingDTO> create(@RequestBody ServicingDTO servicingDTO) {
+  @PostMapping(value = "/create/{providerId}")
+  public ResponseEntity<ServicingDTO> create(
+    @RequestBody ServicingDTO servicingDTO,
+    @PathVariable (required = true) Long providerId) {
+
+    Provider provider = this.providerService.findById(providerId);
     Servicing servicing = Servicing.builder()
     .name(servicingDTO.getName())
     .description(servicingDTO.getDescription())
     .type(servicingDTO.getType())
     .imageUrl(servicingDTO.getImageUrl())
     .build();
+    servicing.setProvider(provider);
     try {
       servicing = this.servicingService.createServicing(servicing);
     } catch (DataIntegrityViolationException e) {
